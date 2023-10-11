@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="_4M_06_KalkulatorWalut.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            >
+            <Label
+                Text="Kalkulator walut"
+                FontSize="32"
+                />
+            <HorizontalStackLayout>
+                <Label
+                    Text="kwota:"
+                    FontSize="24"
+                    />
+                <Entry
+                    FontSize="24"
+                    Placeholder="podaj kwotę"
+                    x:Name="entKwota"
+                    />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <Label
+                    Text="otrzymasz: "
+                    FontSize="24"
+                    />
+                <Label
+                    Text=" 0"
+                    FontSize="24"
+                    x:Name="lblOtrzyma"
+                    />
+                <Label
+                    Text=" EUR"
+                    FontSize="24"
+                    x:Name="lblWaluta"
+                    />
+            </HorizontalStackLayout>
+            <Label
+                Text="w jakiej walucie masz pieniądze:"
+                FontSize="24"
+                />
+            <RadioButton
+                Content="PLN"
+                IsChecked="True"
+                x:Name="rbtnPLN"
+                />
+            <RadioButton
+                Content="EUR"
+                x:Name="rbtnEUR"
+                />
+            <Button
+                Text="Przelicz"
+                Clicked="btnPrzeliczClicked"
+                />
+            <Label
+                x:Name="lblJson"
+                />
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
