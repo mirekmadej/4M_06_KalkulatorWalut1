@@ -12,6 +12,10 @@
                 Text="Kalkulator walut"
                 FontSize="32"
                 />
+            <Label
+                Text="waluta:"
+                x:Name="lblWalutaInfo"
+                />
             <HorizontalStackLayout>
                 <Label
                     Text="kwota:"
@@ -57,7 +61,7 @@
                 Clicked="btnPrzeliczClicked"
                 />
             <Label
-                x:Name="lblJson"
+                x:Name="lblTEST"
                 />
 
 
