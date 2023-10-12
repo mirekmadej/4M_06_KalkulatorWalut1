@@ -60,17 +60,48 @@ namespace _4M_06_KalkulatorWalut
         private void btnKupuje(object sender, EventArgs e)
         {
             string w = entKwota.Text.Replace(".",",");
-
-            double kwotaZr = double.Parse(w);
-            double kwotaWy = kwotaZr * waluta.sprzedaz;
-            string s = "Potrzebujesz: ";
-            s += kwotaWy.ToString("0.00") + " PLN";
-            lblWaluta.Text = s;
+            double kwotaZr;
+            bool czyLiczba = double.TryParse(w, out kwotaZr);
+            if (!czyLiczba)
+            {
+                lblWaluta.Text = "podaj liczbę";
+            }
+            else
+            {
+                double kwotaWy = kwotaZr * waluta.sprzedaz;
+                if (kwotaWy >= 0)
+                {
+                    string s = "Potrzebujesz: ";
+                    s += kwotaWy.ToString("0.00") + " PLN";
+                    lblWaluta.Text = s;
+                }
+                else
+                    lblWaluta.Text = "kwato do wymiany musi być 0 lub większa";
+            }           
             SemanticScreenReader.Announce(lblWaluta.Text);
-
         }
         private void btnSprzedaje(object sender, EventArgs e)
         {
+            string w = entKwota.Text.Replace(".", ",");
+            double kwotaZr;
+            bool czyLiczba = double.TryParse(w, out kwotaZr);
+            if (!czyLiczba)
+            {
+                lblWaluta.Text = "podaj liczbę";
+            }
+            else
+            {
+                double kwotaWy = kwotaZr * waluta.skup;
+                if (kwotaWy >= 0)
+                {
+                    string s = "otrzymasz: ";
+                    s += kwotaWy.ToString("0.00") + " PLN";
+                    lblWaluta.Text = s;
+                }
+                else
+                    lblWaluta.Text = "kwato do wymiany musi być 0 lub większa";
+            }
+            SemanticScreenReader.Announce(lblWaluta.Text);
 
         }
 
