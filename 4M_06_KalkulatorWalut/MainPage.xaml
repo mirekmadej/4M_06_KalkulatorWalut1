@@ -15,55 +15,42 @@
             <Label
                 Text="waluta:"
                 x:Name="lblWalutaInfo"
+                FontSize="18"
                 />
-            <HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="10">
                 <Label
                     Text="kwota:"
                     FontSize="24"
                     />
                 <Entry
                     FontSize="24"
-                    Placeholder="podaj kwotę"
+                    Text="0"
                     x:Name="entKwota"
+                    WidthRequest="150"
                     />
             </HorizontalStackLayout>
-            <HorizontalStackLayout>
-                <Label
-                    Text="otrzymasz: "
-                    FontSize="24"
+            <HorizontalStackLayout
+                Spacing="20"
+               HorizontalOptions="Center">
+                <Button
+                    Text="Kupuję"
+                    Clicked="btnKupuje"
+                    WidthRequest="150"
                     />
-                <Label
-                    Text=" 0"
-                    FontSize="24"
-                    x:Name="lblOtrzyma"
+                <Button
+                    Text="sprzedaję"
+                    Clicked="btnSprzedaje"
+                    WidthRequest="150"
                     />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Spacing="10">
                 <Label
-                    Text=" EUR"
+                    Text=""
                     FontSize="24"
                     x:Name="lblWaluta"
                     />
             </HorizontalStackLayout>
-            <Label
-                Text="w jakiej walucie masz pieniądze:"
-                FontSize="24"
-                />
-            <RadioButton
-                Content="PLN"
-                IsChecked="True"
-                x:Name="rbtnPLN"
-                />
-            <RadioButton
-                Content="EUR"
-                x:Name="rbtnEUR"
-                />
-            <Button
-                Text="Przelicz"
-                Clicked="btnPrzeliczClicked"
-                />
-            <Label
-                x:Name="lblTEST"
-                />
-
+            
 
         </VerticalStackLayout>
     </ScrollView>
