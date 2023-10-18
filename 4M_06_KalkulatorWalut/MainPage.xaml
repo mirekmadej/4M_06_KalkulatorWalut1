@@ -38,9 +38,10 @@
                     />
                 <Entry
                     FontSize="24"
-                    Text="0"
+                    Text=""
                     x:Name="entKwota"
                     WidthRequest="150"
+                    Keyboard="Numeric"
                     />
             </HorizontalStackLayout>
             <HorizontalStackLayout

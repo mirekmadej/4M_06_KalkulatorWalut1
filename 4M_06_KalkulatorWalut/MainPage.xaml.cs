@@ -9,7 +9,7 @@ namespace _4M_06_KalkulatorWalut
     {
         public string[] kodWalut { get; } = { "eur", "gbp", "usd", "chf", "czk" };
         public string kodWaluty { get; private set; } = "eur";
-        public string waluta { get; private set; }
+        public string nazwaWaluty { get; private set; }
         public string date { get; private set; } = "2023-10-11";
         public double skup { get; private set; }
         public double sprzedaz { get; private set; }
@@ -21,17 +21,18 @@ namespace _4M_06_KalkulatorWalut
             }
             pobierzDane();
         }
-        private void pobierzDane()
+        public void pobierzDane(string waluta="eur")
         {
-            string url = "http://api.nbp.pl/api/exchangerates/rates/c/" + kodWaluty + "/2023-10-11/?format=json";
+            kodWaluty = waluta;
+            string url = "http://api.nbp.pl/api/exchangerates/rates/c/" + kodWaluty + "/2023-10-18/?format=json";
             string wynik;
             using (var webClient = new WebClient())
             {
-                wynik = webClient.DownloadString(url);
+                wynik = webClient.DownloadString(url); 
             }
             using JsonDocument j1 = JsonDocument.Parse(wynik);
             JsonElement json = j1.RootElement;
-            waluta = json.GetProperty("currency").ToString();
+            nazwaWaluty = json.GetProperty("currency").ToString();
             var rates = json.GetProperty("rates");
             var rate = rates[0];
             string bid = rate.GetProperty("bid").ToString();
@@ -52,12 +53,15 @@ namespace _4M_06_KalkulatorWalut
         {
             InitializeComponent();
             waluta = new Waluta("eur");
-            string s = waluta.waluta + " skup: " + waluta.skup.ToString() +
+            wypiszWalutaInfo();
+        }
+        private void wypiszWalutaInfo()
+        {
+            string s = waluta.nazwaWaluty + " skup: " + waluta.skup.ToString() +
                 " sprzedaż: " + waluta.sprzedaz.ToString();
             lblWalutaInfo.Text = s;
             SemanticScreenReader.Announce(lblWalutaInfo.Text);
         }
-
         private void btnKupuje(object sender, EventArgs e)
         {
             string w = entKwota.Text.Replace(".",",");
@@ -109,8 +113,8 @@ namespace _4M_06_KalkulatorWalut
         {
             int indeks = pckWaluta.SelectedIndex;
             string kod = waluta.kodWalut[indeks];
-            lblWalutaInfo.Text = kod;
-            SemanticScreenReader.Announce(lblWalutaInfo.Text);
+            waluta.pobierzDane(kod);
+            wypiszWalutaInfo();
         }
 
     }
