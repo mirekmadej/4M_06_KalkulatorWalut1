@@ -12,6 +12,20 @@
                 Text="Kalkulator walut"
                 FontSize="32"
                 />
+            <Picker x:Name="pckWaluta"
+                    Title="Wybierz walutę"
+                    SelectedIndexChanged="pckWalutaChanged"
+                >
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Euro</x:String>
+                        <x:String>Funt brytyjski</x:String>
+                        <x:String>Dolar amerykański</x:String>
+                        <x:String>Franek szwajcarski</x:String>
+                        <x:String>Korona czeska</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
             <Label
                 Text="waluta:"
                 x:Name="lblWalutaInfo"

@@ -7,6 +7,7 @@ namespace _4M_06_KalkulatorWalut
 {
     class Waluta
     {
+        public string[] kodWalut { get; } = { "eur", "gbp", "usd", "chf", "czk" };
         public string kodWaluty { get; private set; } = "eur";
         public string waluta { get; private set; }
         public string date { get; private set; } = "2023-10-11";
@@ -103,6 +104,13 @@ namespace _4M_06_KalkulatorWalut
             }
             SemanticScreenReader.Announce(lblWaluta.Text);
 
+        }
+        private void pckWalutaChanged(object sender, EventArgs e)
+        {
+            int indeks = pckWaluta.SelectedIndex;
+            string kod = waluta.kodWalut[indeks];
+            lblWalutaInfo.Text = kod;
+            SemanticScreenReader.Announce(lblWalutaInfo.Text);
         }
 
     }
