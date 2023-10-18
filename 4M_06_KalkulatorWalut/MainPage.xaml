@@ -15,6 +15,7 @@
             <Label
                 Text="waluta:"
                 x:Name="lblWalutaInfo"
+                FontSize="18"
                 />
             <HorizontalStackLayout>
                 <Label
