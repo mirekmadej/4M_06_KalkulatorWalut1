@@ -46,39 +46,64 @@ namespace _4M_06_KalkulatorWalut
     }
     public partial class MainPage : ContentPage
     {
-        Waluta euro;
+        Waluta waluta;
         public MainPage()
         {
             InitializeComponent();
-            euro = new Waluta("cad");
+            euro = new Waluta("eur");
             string s = euro.waluta + " skup: " + euro.skup.ToString() +
                 " sprzedaż: " + euro.sprzedaz.ToString();
             lblWalutaInfo.Text = s;
             SemanticScreenReader.Announce(lblWalutaInfo.Text);
         }
 
-        
-        private void btnPrzeliczClicked(object sender, EventArgs e)
+        private void btnKupuje(object sender, EventArgs e)
         {
-            double kwotaZr = double.Parse(entKwota.Text);
-            double kwotaWy = 0;
-            bool czyPLN = rbtnPLN.IsChecked;
-            if (czyPLN)
-                kwotaWy = kwotaZr / euro.skup;
+            string w = entKwota.Text.Replace(".",",");
+            double kwotaZr;
+            bool czyLiczba = double.TryParse(w, out kwotaZr);
+            if (!czyLiczba)
+            {
+                lblWaluta.Text = "podaj liczbę";
+            }
             else
-                kwotaWy = kwotaZr * euro.skup;
-            lblOtrzyma.Text = " " + kwotaWy.ToString("0.00");
-            if (czyPLN)
-                lblWaluta.Text = "PLN";
+            {
+                double kwotaWy = kwotaZr * waluta.sprzedaz;
+                if (kwotaWy >= 0)
+                {
+                    string s = "Potrzebujesz: ";
+                    s += kwotaWy.ToString("0.00") + " PLN";
+                    lblWaluta.Text = s;
+                }
+                else
+                    lblWaluta.Text = "kwato do wymiany musi być 0 lub większa";
+            }           
+            SemanticScreenReader.Announce(lblWaluta.Text);
+        }
+        private void btnSprzedaje(object sender, EventArgs e)
+        {
+            string w = entKwota.Text.Replace(".", ",");
+            double kwotaZr;
+            bool czyLiczba = double.TryParse(w, out kwotaZr);
+            if (!czyLiczba)
+            {
+                lblWaluta.Text = "podaj liczbę";
+            }
             else
-                lblWaluta.Text = "EUR";
-            
-            lblTEST.Text = euro.kodWaluty+" "  + euro.skup.ToString();
-            
-            SemanticScreenReader.Announce(lblTEST.Text);
+            {
+                double kwotaWy = kwotaZr * waluta.skup;
+                if (kwotaWy >= 0)
+                {
+                    string s = "otrzymasz: ";
+                    s += kwotaWy.ToString("0.00") + " PLN";
+                    lblWaluta.Text = s;
+                }
+                else
+                    lblWaluta.Text = "kwato do wymiany musi być 0 lub większa";
+            }
+            SemanticScreenReader.Announce(lblWaluta.Text);
 
         }
-
 
     }
 }
