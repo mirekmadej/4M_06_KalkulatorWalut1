@@ -50,9 +50,9 @@ namespace _4M_06_KalkulatorWalut
         public MainPage()
         {
             InitializeComponent();
-            euro = new Waluta("eur");
-            string s = euro.waluta + " skup: " + euro.skup.ToString() +
-                " sprzedaż: " + euro.sprzedaz.ToString();
+            waluta = new Waluta("eur");
+            string s = waluta.waluta + " skup: " + waluta.skup.ToString() +
+                " sprzedaż: " + waluta.sprzedaz.ToString();
             lblWalutaInfo.Text = s;
             SemanticScreenReader.Announce(lblWalutaInfo.Text);
         }
