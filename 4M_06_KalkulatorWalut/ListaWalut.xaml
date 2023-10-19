@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="_4M_06_KalkulatorWalut.ListaWalut"
+             Title="ListaWalut">
+    <VerticalStackLayout>
+        <Label 
+            Text="kurs walut"
+            HorizontalOptions="Center" 
+            FontSize="28"/>
+        <HorizontalStackLayout Spacing="10">
+            <Label
+                Text="eur"
+                x:Name="lblWaluta1"
+               
+                FontSize="22"
+                />
+            <Image
+                Source="zielona.png"
+                x:Name="imgSkup1"
+                HeightRequest="15"
+                />
+            <Label
+                Text="4.1234"
+                x:Name="lblSkup1"
+                FontSize="22"
+                />
+            <Image
+                Source="zielona.png"
+                x:Name="imgSprzedaz1"
+                HeightRequest="15"
+                />
+            <Label
+                Text="4.4567"
+                x:Name="lblSprzedaz1"
+                FontSize="22"
+                />
+        </HorizontalStackLayout>
+        <HorizontalStackLayout Spacing="10">
+            <Label
+                Text="usd"
+                x:Name="lblWaluta2"
+               
+                FontSize="22"
+                />
+            <Image
+                Source="zielona.png"
+                x:Name="imgSkup2"
+                HeightRequest="15"
+                />
+            <Label
+                Text="4.1234"
+                x:Name="lblSkup2"
+                FontSize="22"
+                />
+            <Image
+                Source="zielona.png"
+                x:Name="imgSprzedaz2"
+                HeightRequest="15"
+                />
+            <Label
+                Text="4.4567"
+                x:Name="lblSprzedaz2"
+                FontSize="22"
+                />
+        </HorizontalStackLayout>
+
+
+
+    </VerticalStackLayout>
+</ContentPage>

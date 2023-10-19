@@ -13,18 +13,18 @@ namespace _4M_06_KalkulatorWalut
         public string date { get; private set; } = "2023-10-11";
         public double skup { get; private set; }
         public double sprzedaz { get; private set; }
-        public Waluta(string code = "eur") 
+        public Waluta(string code = "eur", string data="2023-10-19") 
         {
             if (code.Length > 0)
             {
                 kodWaluty = code;
             }
-            pobierzDane();
+            pobierzDane(kodWaluty, data);
         }
-        public void pobierzDane(string waluta="eur")
+        public void pobierzDane(string waluta="eur", string data = "2023-10-19")
         {
             kodWaluty = waluta;
-            string url = "http://api.nbp.pl/api/exchangerates/rates/c/" + kodWaluty + "/2023-10-18/?format=json";
+            string url = "http://api.nbp.pl/api/exchangerates/rates/c/" + kodWaluty + "/"+data+"/?format=json";
             string wynik;
             using (var webClient = new WebClient())
             {
