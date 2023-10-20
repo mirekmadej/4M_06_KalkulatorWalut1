@@ -13,6 +13,9 @@
     <ShellContent
         Title="Lista walut"
         ContentTemplate="{DataTemplate local:ListaWalut}"
-        Route="ListaWalut" />    
-
+        Route="ListaWalut" />
+    <ShellContent
+        Title="Lista walut"
+        ContentTemplate="{DataTemplate local:NewPage1}"
+        Route="NewPage1" />
 </Shell>

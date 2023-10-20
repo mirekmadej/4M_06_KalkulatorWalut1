@@ -6,13 +6,20 @@ public partial class NewPage1 : ContentPage
 	public NewPage1()
 	{
 		InitializeComponent();
+		ustawDate();
 	}
-	private void pckIndexChanged(object sender, EventArgs e)
-	{
-		Waluta waluta = new Waluta();
-		int indeks = pckWaluta.SelectedIndex;
-		lblWybranaWaluta.Text = waluta.kodWalut[indeks];
-				
 
-	}
+	private void ustawDate()
+	{
+		DateTime dzis = DateTime.Today;
+		
+		DateTime wczoraj = DateTime.Today.AddDays(-1);
+
+        lblData.Text = dzis.ToString("yyyy-MM-dd")+ "\n"
+			+wczoraj.ToString();
+
+    }
+
+
+
 }

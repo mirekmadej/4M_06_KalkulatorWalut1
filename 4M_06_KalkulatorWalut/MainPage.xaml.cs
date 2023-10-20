@@ -13,11 +13,16 @@ namespace _4M_06_KalkulatorWalut
         public string date { get; private set; } = "2023-10-11";
         public double skup { get; private set; }
         public double sprzedaz { get; private set; }
-        public Waluta(string code = "eur", string data="2023-10-19") 
+        public Waluta(string code = "eur", string data="") 
         {
             if (code.Length > 0)
             {
                 kodWaluty = code;
+            }
+            if(data.Length == 0)
+            {
+                DateTime dDzis = DateTime.Today;
+                data = dDzis.ToString("yyyy-MM-dd");
             }
             pobierzDane(kodWaluty, data);
         }
@@ -52,12 +57,14 @@ namespace _4M_06_KalkulatorWalut
         public MainPage()
         {
             InitializeComponent();
-            waluta = new Waluta("eur");
+            DateTime dDzis = DateTime.Today;
+            string dzis = dDzis.ToString("yyyy-MM-dd");
+            waluta = new Waluta("eur", dzis);
             wypiszWalutaInfo();
         }
         private void wypiszWalutaInfo()
         {
-            string s = waluta.nazwaWaluty + " skup: " + waluta.skup.ToString() +
+            string s = waluta.nazwaWaluty + "\nskup: " + waluta.skup.ToString() +
                 " sprzedaż: " + waluta.sprzedaz.ToString();
             lblWalutaInfo.Text = s;
             SemanticScreenReader.Announce(lblWalutaInfo.Text);

@@ -5,43 +5,13 @@
              Title="NewPage1">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="x"
             VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Picker x:Name="picker"
-        Title="Select a monkey">
-            <Picker.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>Baboon</x:String>
-                    <x:String>Capuchin Monkey</x:String>
-                    <x:String>Blue Monkey</x:String>
-                    <x:String>Squirrel Monkey</x:String>
-                    <x:String>Golden Lion Tamarin</x:String>
-                    <x:String>Howler Monkey</x:String>
-                    <x:String>Japanese Macaque</x:String>
-                </x:Array>
-            </Picker.ItemsSource>
-        </Picker>
-        <Picker x:Name="pckWaluta"
-            Title="Wybierz wlautę" 
-            SelectedIndex="0"    
-            SelectedIndexChanged="pckIndexChanged"
-                >
-            <Picker.ItemsSource>
-                <x:Array Type="{x:Type x:String}">
-                    <x:String>Euro</x:String>
-                    <x:String>Funt brytyjski</x:String>
-                    <x:String>dolar USA</x:String>
-                    <x:String>frank szwajcarski</x:String>
-                    <x:String>wróble rosyjskie</x:String>
-                </x:Array>
-            </Picker.ItemsSource>
-        </Picker>
-        <Label
-            Text="wybrana waluta:"
-            x:Name="lblWybranaWaluta"
+            HorizontalOptions="Center" 
+            x:Name="lblData"
+            FontSize="48"
             />
-
+       
 
     </VerticalStackLayout>
 </ContentPage>

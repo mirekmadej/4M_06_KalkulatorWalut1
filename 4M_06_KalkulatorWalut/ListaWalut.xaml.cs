@@ -9,8 +9,13 @@ public partial class ListaWalut : ContentPage
 	}
 	private void walutaEUR()
 	{
-		Waluta eDzis = new Waluta("eur", "2023-10-19");
-		Waluta eWczoraj = new Waluta("eur", "2023-10-18");
+        DateTime dDzis = DateTime.Today;
+        DateTime dWczoraj = DateTime.Today.AddDays(-1);
+        string dzis = dDzis.ToString("yyyy-MM-dd");
+        string wczoraj = dWczoraj.ToString("yyyy-MM-dd");
+        
+        Waluta eDzis = new Waluta("eur", dzis);
+		Waluta eWczoraj = new Waluta("eur", wczoraj);
 		if (eDzis.skup > eWczoraj.skup)
 			imgSkup1.Source = "zielona.png";
 		else if (eDzis.skup < eWczoraj.skup)
@@ -28,8 +33,12 @@ public partial class ListaWalut : ContentPage
     }
     private void walutaUSD()
     {
-        Waluta eDzis = new Waluta("usd", "2023-10-19");
-        Waluta eWczoraj = new Waluta("usd", "2023-10-18");
+        DateTime dDzis = DateTime.Today;
+        DateTime dWczoraj = DateTime.Today.AddDays(-1);
+        string dzis = dDzis.ToString("yyyy-MM-dd");
+        string wczoraj = dWczoraj.ToString("yyyy-MM-dd"); 
+        Waluta eDzis = new Waluta("usd", dzis);
+        Waluta eWczoraj = new Waluta("usd", wczoraj);
         if (eDzis.skup > eWczoraj.skup)
             imgSkup2.Source = "zielona.png";
         else if (eDzis.skup < eWczoraj.skup)
